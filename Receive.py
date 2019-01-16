@@ -9,11 +9,7 @@ from scapy.sendrecv import sendp, send
 
 
 
-
-
-greeting='Hello Andi this is the number you wanted:'
-
-number=1000000
+number=0
 
 
 
@@ -22,8 +18,8 @@ with open('a.png', 'rb') as f:
         chunk = f.read(1400)
         if not chunk:
             break
-
-        number_to_send = str(number).encode('ascii')
+        number_to_send = 'A'+str(number)
+        number_to_send = str(number_to_send).encode('ascii')
         number_to_send_byte = bytes(number_to_send)
         data=chunk+number_to_send
         sendp(Ether() / IP(src="127.0.0.1", dst="192.168.11.47") / UDP(sport=randrange(65530), dport=5005) / Raw(
