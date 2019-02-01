@@ -1,8 +1,14 @@
-from scapy.layers.inet import IP, UDP
-from scapy.layers.l2 import Ether
-from scapy.packet import Raw
-from scapy.sendrecv import sendp, send, sniff
+import Send
+import unittest
 
-pkts=sniff(count=10, iface="lo")
+class TestStringMethods(unittest.TestCase):
+    def test_upper(self):
+        data = bytes('andi', 'ascii')
+        counter=100
+        assert_true='andid'.encode('ascii')
+        self.assertEqual(Send.add_counter_packet(data, counter),assert_true )
 
-print(pkts)
+
+
+if __name__ == '__main__':
+    unittest.main()
